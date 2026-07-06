@@ -47,7 +47,7 @@ jobs:
 
 
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
             path: 'cvi_mmf_sdk'  # TODO: make this name a global variable
             ref: 'KuRue-OV5647'
