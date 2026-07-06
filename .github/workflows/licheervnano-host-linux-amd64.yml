@@ -12,11 +12,9 @@ jobs:
 
     steps:
       - name: ccache
-        uses: hendrikmuhs/ccache-action@v2
-        with:
-          max-size: "20G"
-          create-symlink: true
-          key: ${{matrix.os }}-${{ matrix.type }}
+        run: |
+          ccache --max-size=20G
+          ccache -s
 
       - name: Create Timestamp
         run: |
