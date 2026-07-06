@@ -11,11 +11,6 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: ccache
-        run: |
-          ccache --max-size=20G
-          ccache -s
-
       - name: Create Timestamp
         run: |
               echo "BUILD_ID=$(date +%Y%m%d_%H%M%S)" >> $GITHUB_ENV
@@ -41,13 +36,14 @@ jobs:
                                   chrpath socat python3-pip python3-pexpect xz-utils debianutils \
                                   iputils-ping python3-git python3-jinja2 libegl1-mesa libsdl1.2-dev \
                                   python3-subunit mesa-common-dev zstd liblz4-tool libacl1 parted erofs-utils \
-                                  genext2fs mtools fatcat ckermit neovim cscope asciinema libconfuse-dev
+                                  genext2fs mtools fatcat ckermit neovim cscope asciinema libconfuse-dev && \
+              ccache --max-size=20G && ccache -s
 
 
       - name: Checkout Repo
         uses: actions/checkout@v5
         with:
-            path: 'cvi_mmf_sdk'  # TODO: make this name a global variable
+            path: 'cvi_mmf_sdk'
             ref: 'KuRue-OV5647'
 
       - name: Download Toolchain
