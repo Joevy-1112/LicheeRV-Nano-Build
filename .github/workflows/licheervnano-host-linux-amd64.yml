@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: ccache
-        uses: hendrikmuhs/ccache-action@v1.2
+        uses: hendrikmuhs/ccache-action@v2
         with:
           max-size: "20G"
           create-symlink: true
@@ -47,7 +47,7 @@ jobs:
 
 
       - name: Checkout Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
             path: 'cvi_mmf_sdk'  # TODO: make this name a global variable
             ref: 'KuRue-OV5647'
@@ -99,7 +99,7 @@ jobs:
               popd
 
       - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           retention-days: 30
           name: licheervnano-cvi-mmf-sdk-output-${{ env.BUILD_ID }}
